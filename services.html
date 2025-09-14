@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-clifford: #da373d; 
+      --color-yellow: #facc15;
+      --color-orange: #f97316;
+      --color-orange-hover: #fb923c; 
+    }
+
+    .theme-switch input {
+        display: none; 
+    }
+    .slider {
+        @apply bg-gray-300 inset-0 absolute cursor-pointer transition-all duration-400 rounded-full;
+    }
+    .slider:before {
+        content: "";
+        @apply absolute bg-white bottom-0.5 left-0.5 h-5 w-5 transition-all duration-400 rounded-full;
+    }
+    input:checked + .slider {
+        @apply bg-blue-500; 
+    }
+    input:checked + .slider:before {
+        transform: translateX(1.25rem); 
+    }
+    
+    body.dark .fa-sun { @apply text-gray-400; }
+    body.dark .fa-moon { @apply text-white; }
+  </style>
+  <!-- Font Awesome CSS for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-black text-gray-200"> <!-- Added default dark body background and text as per your Trace Travel example -->
+
+  <!-- Tailwind CSS Header Section -->
+  <header id="site-header" class="fixed top-0 left-0 w-full bg-black shadow z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <h1 class="text-2xl font-bold text-orange-500">
+                <a href="index.html">Trace</a>
+            </h1>
+            <!-- Optional image logo -->
+            <!-- <a href="index.html" class="ml-4">
+                <img src="https://via.placeholder.com/35x35?text=YourLogo" alt="Your logo" title="Your logo" class="h-9">
+            </a> -->
+        </div>
+
+        <!-- Mobile Menu Toggle Button (Hamburger) -->
+        <button id="navbar-toggler" class="lg:hidden text-white focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+
+        <!-- Navigation Menu (Hidden on mobile by default, shown on toggle) -->
+        <nav id="navbar-menu" class="hidden lg:flex flex-col lg:flex-row lg:items-center absolute lg:static top-16 left-0 w-full lg:w-auto bg-gray-900 lg:bg-transparent shadow-lg lg:shadow-none p-4 lg:p-0">
+            <ul class="flex flex-col lg:flex-row lg:space-x-8 mt-4 lg:mt-0">
+                <li class="nav-item mb-2 lg:mb-0">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md" href="home.html">Home</a>
+                </li>
+                <li class="nav-item mb-2 lg:mb-0">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md" href="about.html">About</a>
+                </li>
+                <li class="nav-item active mb-2 lg:mb-0">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md" href="index.html">Services</a>
+                </li>
+                <li class="nav-item mb-2 lg:mb-0">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md" href="gallery.html">Destinations</a>
+                </li>
+                <!-- Dropdown for Pages -->
+                <li class="nav-item dropdown relative mb-2 lg:mb-0 group">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md flex items-center" href="#" id="navbarDropdown1">
+                        Pages <i class="fas fa-angle-down ml-1 text-sm"></i>
+                    </a>
+                    <div class="dropdown-menu absolute hidden group-hover:block bg-gray-800 shadow-lg rounded-md mt-2 py-1 w-48 z-10">
+                        <a class="dropdown-item block px-4 py-2 text-white hover:bg-gray-700 hover:text-orange-400" href="blog.html">Blog Posts</a>
+                        <a class="dropdown-item block px-4 py-2 text-white hover:bg-gray-700 hover:text-orange-400" href="blog-single.html">Blog single</a>
+                        <a class="dropdown-item block px-4 py-2 text-white hover:bg-gray-700 hover:text-orange-400" href="landing-single.html">Landing Page</a>
+                        <a class="dropdown-item block px-4 py-2 text-white hover:bg-gray-700 hover:text-orange-400" href="404.html">Error Page</a>
+                    </div>
+                </li>
+                <li class="nav-item mb-2 lg:mb-0">
+                    <a class="nav-link text-white hover:text-orange-400 font-medium px-3 py-2 rounded-md" href="contact.html">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Search Icon -->
+            <div class="ml-0 lg:ml-8 mt-4 lg:mt-0 flex items-center">
+                <button id="search-btn" class="text-white hover:text-orange-400 focus:outline-none">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Theme Switch -->
+            <div class="ml-0 lg:ml-4 mt-4 lg:mt-0 theme-switch-wrapper flex items-center">
+                <label class="theme-switch inline-block h-6 relative w-11 cursor-pointer" for="checkbox">
+                    <input type="checkbox" id="checkbox">
+                    <div class="mode-container absolute inset-0 flex items-center justify-between pointer-events-none">
+                        <!-- Adjusted text colors for better contrast on a dark background -->
+                        <i class="fas fa-sun absolute left-1 top-1/2 -translate-y-1/2 text-yellow-300"></i>
+                        <i class="fas fa-moon absolute right-1 top-1/2 -translate-y-1/2 text-gray-300"></i>
+                        <span class="slider round"></span>
+                    </div>
+                </label>
+            </div>
+        </nav>
+    </div>
+  </header>
+
+  <!-- Search Popup -->
+  <div id="search-pop-overlay" class="fixed inset-0 bg-black/70 flex items-center justify-center z-[1000] opacity-0 invisible transition-opacity duration-300 pointer-events-none">
+    <div class="bg-white p-8 rounded-lg relative max-w-lg w-11/12 shadow-xl">
+      <form action="#" method="GET" class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <input type="search" placeholder="Search.." name="search" required="required" autofocus=""
+               class="flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-clifford text-black">
+        <button type="submit" class="bg-clifford text-white px-4 py-2 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-clifford">Search</button>
+        <!-- Close button positioned with Tailwind utilities -->
+        <button type="button" class="close absolute top-2 right-4 text-3xl font-light text-white hover:text-orange-400">&times;</button>
+      </form>
+    </div>
+  </div>
+  <!-- End Tailwind CSS Header Section -->
+
+  <!-- Main Content Area -->
+  <div class="bg-[url('https://stfturist-en.imgix.net/app/uploads/sites/2/2024/11/vandringsleder-sverige.jpg?auto=format%2Cenhance')] 
+              h-[500px] w-full bg-cover bg-center mt-16">
+  </div>
+
+  <section class="middle">
+    <div class="content-photo-info py-10">
+      <div class="container py-10 max-w-5xl mx-auto">
+        
+        <!-- Row 1 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <a href="#"><img src="https://p.w3layouts.com/demos_new/template_demo/08-09-2021/trace-liberty-demo_Free/1224681717/web/assets/images/g4.jpg" class="rounded-lg shadow-md w-full" alt=""></a>
+          </div>
+          <div>
+            <h6 class="text-clifford font-bold">01</h6>
+            <h3 class="text-2xl font-bold">Let's Enjoy The Wonders of Nature</h3>
+            <p class="mt-3 mb-3 text-gray-700">Lorem ipsum dolor sit amet, Ea consequuntur illum
+              facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+              consequatur saepe blanditiis.</p>
+            <a href="services.html" class="text-clifford font-semibold hover:underline">Read more</a>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center mt-16">
+          <div class="order-2 md:order-1">
+            <h6 class="text-clifford font-bold">02</h6>
+            <h3 class="text-2xl font-bold">Keep calm &amp; travelling On</h3>
+            <p class="mt-3 mb-3 text-gray-700">Lorem ipsum dolor sit amet, Ea consequuntur illum
+              facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+              consequatur saepe blanditiis.</p>
+            <a href="services.html" class="text-clifford font-semibold hover:underline">Read more</a>
+          </div>
+          <div class="order-1 md:order-2">
+            <a href="#"><img src="https://p.w3layouts.com/demos_new/template_demo/08-09-2021/trace-liberty-demo_Free/1224681717/web/assets/images/g1.jpg" class="rounded-lg shadow-md w-full" alt=""></a>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center mt-16">
+          <div>
+            <a href="#"><img src="https://p.w3layouts.com/demos_new/template_demo/08-09-2021/trace-liberty-demo_Free/1224681717/web/assets/images/g2.jpg" class="rounded-lg shadow-md w-full" alt=""></a>
+          </div>
+          <div>
+            <h6 class="text-clifford font-bold">03</h6>
+            <h3 class="text-2xl font-bold">Better Prices Exceptional People.</h3>
+            <p class="mt-3 mb-3 text-gray-700">Lorem ipsum dolor sit amet, Ea consequuntur illum
+              facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+              consequatur saepe blanditiis.</p>
+            <a href="services.html" class="text-clifford font-semibold hover:underline">Read more</a>
+          </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="grid md:grid-cols-2 gap-8 items-center mt-16">
+          <div class="order-2 md:order-1">
+            <h6 class="text-clifford font-bold">04</h6>
+            <h3 class="text-2xl font-bold">Beautiful One Day, Perfect The Next.</h3>
+            <p class="mt-3 mb-3 text-gray-700">Lorem ipsum dolor sit amet, Ea consequuntur illum
+              facere aperiam sequi optio consectetur adipisicing elit. Fuga, suscipit totam animi
+              consequatur saepe blanditiis.</p>
+            <a href="services.html" class="text-clifford font-semibold hover:underline">Read more</a>
+          </div>
+          <div class="order-1 md:order-2">
+            <a href="#"><img src="https://p.w3layouts.com/demos_new/template_demo/08-09-2021/trace-liberty-demo_Free/1224681717/web/assets/images/g3.jpg" class="rounded-lg shadow-md w-full" alt=""></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbarToggler = document.getElementById('navbar-toggler');
+        const navbarMenu = document.getElementById('navbar-menu');
+        const searchBtn = document.getElementById('search-btn');
+        const searchPopOverlay = document.getElementById('search-pop-overlay');
+        const searchCloseBtn = searchPopOverlay.querySelector('.close');
+        const themeSwitchCheckbox = document.getElementById('checkbox');
+        const body = document.body;
+
+        navbarToggler.addEventListener('click', () => {
+            navbarMenu.classList.toggle('hidden');
+            const icon = navbarToggler.querySelector('i');
+            if (navbarMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        const dropdownToggles = document.querySelectorAll('.dropdown > a');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth < 1024) {
+                    e.preventDefault();
+                    const dropdownMenu = toggle.nextElementSibling;
+                    dropdownMenu.classList.toggle('hidden');
+                }
+            });
+        });
+
+        searchBtn.addEventListener('click', () => {
+            searchPopOverlay.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+            searchPopOverlay.classList.add('opacity-100', 'visible', 'pointer-events-auto');
+        });
+        searchCloseBtn.addEventListener('click', () => {
+            searchPopOverlay.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+            searchPopOverlay.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+        });
+        searchPopOverlay.addEventListener('click', (e) => {
+            if (e.target === searchPopOverlay) { 
+                searchPopOverlay.classList.remove('opacity-100', 'visible', 'pointer-events-auto');
+                searchPopOverlay.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+            }
+        });
+
+        themeSwitchCheckbox.addEventListener('change', () => {
+            if (themeSwitchCheckbox.checked) {
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            if (savedTheme === 'dark') {
+                body.classList.add('dark');
+                themeSwitchCheckbox.checked = true;
+            } else {
+                body.classList.remove('dark');
+                themeSwitchCheckbox.checked = false;
+            }
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark');
+            themeSwitchCheckbox.checked = true;
+        }
+    });
+  </script>
+
+</body>
+</html>
